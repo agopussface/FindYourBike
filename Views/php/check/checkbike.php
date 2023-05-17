@@ -3,7 +3,6 @@ include('../../module/dbconnect.php');
 
 $error = 0;
 
-
 $ebike;
 
 // Photo du vélo
@@ -76,9 +75,8 @@ if (isset($_POST['brand'])) {
 } else {
     $error++;
 }
-
+ 
 $entryacc;
-
 
 print $color . '<br>';
 print $size . '<br>';

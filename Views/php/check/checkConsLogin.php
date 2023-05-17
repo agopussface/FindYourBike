@@ -2,10 +2,33 @@
 session_start();
 include('../../module/dbconnect.php');
 
+$error = 0;
 
-// Recupère les infos du formulaire en POST et les entre dans une variable
-$username = $_POST['consUsername'];
-$password = $_POST['consPassword'];
+// Recupère et traite les infos du formulaire en POST
+if (isset($_POST['consUsername'])) {
+    if (!empty($_POST['consUsername'])) {
+        $username = mysqli_real_escape_string($db, ($_POST['consUsername']));
+    } else {
+        $error++;
+        print 'empty username' . '<br>';
+    }
+} else {
+    $error++;
+    print 'not isset username' . '<br>';
+}
+
+if (isset($_POST['consPassword'])) {
+    if (!empty($_POST['consPassword'])) {
+        $password = mysqli_real_escape_string($db, ($_POST['consPassword']));
+    }else{
+        $error++;
+        print 'empty password' . '<br>';
+    }
+}else{
+    $error++;
+    print 'not isset password' . '<br>';
+}
+
 
 // Query SQL en fonction de l'entrée username
 $query = mysqli_query($db, "SELECT * FROM t_consultacc WHERE coaUsername='$username'");
@@ -13,12 +36,15 @@ while ($row = $query->fetch_assoc()) {
     $pwd = $row['coaPassword'];
 }
 
-// Check si le password entré dans le formulaire ($password) correspond au password de la db ($pwd)
-if ($password == $pwd) {
+if($password !== $pwd){
+    $error++;
+    print 'wrong password' . '<br>';
+}
+
+if($error >= 1){
+    header('Location: ../login.php');
+}else{
     $_SESSION['logged'] = true;
     $_SESSION['username'] = $username;
-    header('Location: ../home.php'); // Redirection à la page home si validé
-
-} else {
-    header('Location: ../login.php'); // Redirection vers la page de login si pas validé
+    header('Location: ../home.php');
 }

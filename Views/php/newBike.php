@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="FR">
 
 <head>
-    <!-- CSS de Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="description" content="Application Web de gestion de vélo perdu puis retrouvé. TPI-2023" />
+    <meta name="author" content="Cyril Narducci" />
+
+    <!-- Inclusion des modules de l'application -->
     <?php
     include('../module/dbconnect.php');
+    include('../module/navbar.html');
     ?>
+
+    <title>New Bike</title>
+
 </head>
 
 <body>
     <div class="container">
-        <form action="check/checkBike.php" method="POST">
+        <h2>Recenser un vélo</h2>
+        <form action="check/checkBike.php" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="bike-picture" class="form-label">Photo du vélo</label>

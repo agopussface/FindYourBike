@@ -1,59 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="FR">
 
 <head>
-  <title>Page de connexion</title>
+  <!-- Meta tags -->
+  <meta charset="UTF-8" />
+  <meta name="description" content="Application Web de gestion de vélo perdu puis retrouvé. TPI-2023" />
+  <meta name="author" content="Cyril Narducci" />
+
+  <title>Login</title>
+
+  <!-- Feuilles de style et script JavaScript-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../js/blockinput.js"></script>
+
 </head>
 
 <body>
-  <h2>consultacc</h2>
-  <form action="check/checkConsLogin.php" method="post">
-    <label for="username">Nom d'utilisateur:</label>
-    <input type="text" id="consUsername" name="consUsername" oninput="blockInput()"><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Consultation</h2>
+        <form action="check/checkConsLogin.php" method="post">
+          <div class="mb-3">
+            <label for="consUsername" class="form-label">Nom d'utilisateur:</label>
+            <input type="text" class="form-control" id="consUsername" name="consUsername" oninput="blockInput()">
+          </div>
 
-    <label for="password">Mot de passe:</label>
-    <input type="password" id="consPassword" name="consPassword"><br><br>
+          <div class="mb-3">
+            <label for="consPassword" class="form-label">Mot de passe:</label>
+            <input type="password" class="form-control" id="consPassword" name="consPassword">
+          </div>
 
-    <input type="submit" id="consBtn" value="Se connecter">
-  </form>
+          <button type="submit" class="btn btn-primary" id="consBtn">Se connecter</button>
+        </form>
+      </div>
 
-  <h2>entryacc</h2>
-  <form action="check/checkEntrLogin.php" method="post">
-    <label for="username">Nom d'utilisateur:</label>
-    <input type="text" id="entrUsername" name="entrUsername" oninput="blockInput()"><br><br>
+      <div class="col-md-6">
+        <h2>Commune</h2>
+        <form action="check/checkEntrLogin.php" method="post">
+          <div class="mb-3">
+            <label for="entrUsername" class="form-label">Nom d'utilisateur:</label>
+            <input type="text" class="form-control" id="entrUsername" name="entrUsername" oninput="blockInput()">
+          </div>
 
-    <label for="password">Mot de passe:</label>
-    <input type="password" id="entrPassword" name="entrUsername"><br><br>
+          <div class="mb-3">
+            <label for="entrPassword" class="form-label">Mot de passe:</label>
+            <input type="password" class="form-control" id="entrPassword" name="entrPassword">
+          </div>
 
-    <input type="submit" id="entrBtn" value="Se connecter">
-  </form>
+          <button type="submit" class="btn btn-primary" id="entrBtn">Se connecter</button>
+        </form>
+      </div>
+    </div>
 
-  <script>
- function blockInput() {
-  
-  if (consUsername.value.length > 0) {
-    entrUsername.disabled = true;
-    entrPassword.disabled = true;
-    entrBtn.disabled = true;
-  } else {
-    entrUsername.disabled = false;
-    entrPassword.disabled = false;
-    entrBtn.disabled = false;
-  }
+    <div class="mt-3 align-center">
+      <a href="../php/newCity.php" class="btn btn-primary">S'inscrire en tant que commune</a>
+    </div>
 
-  if (entrUsername.value.length > 0) {
-    consUsername.disabled = true;
-    consPassword.disabled = true;
-    consBtn.disabled = true;
-    
-  } else {
-    consUsername.disabled = false;
-    consPassword.disabled = false;
-    consBtn.disabled = false;
-  }
-}
+  </div>
 
-  </script>
 </body>
 
 </html>
