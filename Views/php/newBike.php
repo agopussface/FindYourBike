@@ -24,19 +24,19 @@
         <form action="check/checkBike.php" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
-                <label for="bike-picture" class="form-label">Photo du vélo</label>
-                <input type="file" class="form-control" id="bike-picture" name="bikepicture">
+                <label for="bikepicture" class="form-label">Photo du vélo</label>
+                <input type="file" class="form-control" id="bikepicture" name="bikepicture">
             </div>
 
             <fieldset class="mb-3">
                 <legend class="form-label">EBike ?</legend>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" id="yesEbike" name="ebike" value="yes">
-                    <label class="form-check-label" for="yesEbike">Oui</label>
+                    <input type="radio" id="option1" name="ebike" value="yes">
+                    <label for="option1">Option 1</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" id="noEbike" name="ebike" value="no">
-                    <label class="form-check-label" for="noEbike">Non</label>
+                    <input type="radio" id="option2" name="ebike" value="no">
+                    <label for="option2">Option 2</label>
                 </div>
             </fieldset>
 
@@ -61,7 +61,7 @@
                     <?php
                     $query = mysqli_query($db, "SELECT * FROM t_brand");
                     while ($row = $query->fetch_assoc()) {
-                        echo '<option value="' . $row['braName'] . '">' . $row['braName'] . '</option>';
+                        print '<option value="' . $row['braName'] . '">' . $row['braName'] . '</option>';
                     }
                     ?>
                 </select>

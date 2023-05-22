@@ -1,50 +1,48 @@
 <?php
-session_start();
 include('../../module/dbconnect.php');
+session_start(); // Démarre une session PHP pour gérer les variables de session
+$error = 0; // Variable pour compter les erreurs éventuelles
 
-$error = 0;
+// Récupère et traite les informations du formulaire en POST
 
-// Recupère et traite les infos du formulaire en POST
-if (isset($_POST['consUsername'])) {
-    if (!empty($_POST['consUsername'])) {
-        $username = mysqli_real_escape_string($db, ($_POST['consUsername']));
+// Username
+if (isset($_POST['consUsername'])) { // Vérifie si le champ "consUsername" a été envoyé via POST
+    if (!empty($_POST['consUsername'])) { // Vérifie si le champ "consUsername" n'est pas vide
+        $username = mysqli_real_escape_string($db, ($_POST['consUsername'])); // Échappe les caractères spéciaux et assigne la valeur à la variable $username
     } else {
-        $error++;
-        print 'empty username' . '<br>';
+        $error++; // Incrémente $error pour indiquer une erreur
     }
 } else {
-    $error++;
-    print 'not isset username' . '<br>';
+    $error++; // Incrémente $error pour indiquer une erreur
 }
 
-if (isset($_POST['consPassword'])) {
-    if (!empty($_POST['consPassword'])) {
-        $password = mysqli_real_escape_string($db, ($_POST['consPassword']));
-    }else{
-        $error++;
-        print 'empty password' . '<br>';
+// Password
+if (isset($_POST['consPassword'])) { // Vérifie si le champ "consPassword" a été envoyé via POST
+    if (!empty($_POST['consPassword'])) { // Vérifie si le champ "consPassword" n'est pas vide
+        $password = mysqli_real_escape_string($db, ($_POST['consPassword'])); // Échappe les caractères spéciaux et assigne la valeur à la variable $password
+    } else {
+        $error++; // Incrémente $error pour indiquer une erreur
     }
-}else{
-    $error++;
-    print 'not isset password' . '<br>';
+} else {
+    $error++; // Incrémente $error pour indiquer une erreur
 }
 
-
-// Query SQL en fonction de l'entrée username
+// Requête SQL en fonction de l'entrée de l'utilisateur pour le nom d'utilisateur
 $query = mysqli_query($db, "SELECT * FROM t_consultacc WHERE coaUsername='$username'");
-while ($row = $query->fetch_assoc()) {
-    $pwd = $row['coaPassword'];
+
+while ($row = $query->fetch_assoc()) { // Parcours les résultats de la requête
+    $pwd = $row['coaPassword']; // Récupère le mot de passe correspondant à l'entrée de l'utilisateur
 }
 
-if($password !== $pwd){
-    $error++;
-    print 'wrong password' . '<br>';
+if ($password !== $pwd) { // Vérifie si le mot de passe entré ne correspond pas au mot de passe récupéré
+    $error++; // Incrémente $error pour indiquer une erreur
 }
 
-if($error >= 1){
-    header('Location: ../login.php');
-}else{
-    $_SESSION['logged'] = true;
-    $_SESSION['username'] = $username;
-    header('Location: ../home.php');
+if ($error >= 1) { // Vérifie s'il y a eu au moins une erreur
+    header('Location: ../login.php'); // Redirige vers la page de connexion en cas d'erreur
+} else {
+    $_SESSION['logged'] = true; // Définit la variable de session 'logged' à true pour indiquer que l'utilisateur est connecté
+    $_SESSION['username'] = $username; // Stocke le nom d'utilisateur dans la variable de session 'username'
+    header('Location: ../home.php'); // Redirige vers la page d'accueil en cas de succès
 }
+?>

@@ -38,6 +38,8 @@
         </div>
     </div>
 
+    <?php print $_SESSION['username']; 
+    print $_SESSION['city'];?>
 </body>
 
 </html>
