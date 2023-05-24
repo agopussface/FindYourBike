@@ -1,3 +1,3 @@
 <?php
-$db = mysqli_connect('localhost', 'root', 'jesappeleroot', 'db_findyourbike');
+$db = mysqli_connect('localhost', 'root', '@b5J3', 'db_findyourbike');
 ?>

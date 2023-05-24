@@ -31,12 +31,12 @@
             <fieldset class="mb-3">
                 <legend class="form-label">EBike ?</legend>
                 <div class="form-check">
-                    <input type="radio" id="option1" name="ebike" value="yes">
-                    <label for="option1">Option 1</label>
+                    <input type="radio" id="option1" name="ebike" value="Oui">
+                    <label for="option1">Oui</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" id="option2" name="ebike" value="no">
-                    <label for="option2">Option 2</label>
+                    <input type="radio" id="option2" name="ebike" value="Non">
+                    <label for="option2">Non</label>
                 </div>
             </fieldset>
 
