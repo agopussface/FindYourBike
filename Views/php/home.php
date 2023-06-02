@@ -39,7 +39,10 @@
     </div>
 
     <?php print $_SESSION['username']; 
-    print $_SESSION['city'];?>
+    print $_SESSION['city'] . '<br>';
+    print $_SESSION['trimSelect'];
+    print $_SESSION['yearSelect'];
+    ?>
 </body>
 
 </html>
