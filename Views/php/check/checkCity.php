@@ -121,13 +121,12 @@ if ($error >= 1) { // Vérifie s'il y a eu au moins une erreur
     print $accEmail . '<br>';
     print $accPhone . '<br>';
     print $accRole . '<br>';*/
-
 } else {
     move_uploaded_file($tmpname, $logoDestination); // Déplace le fichier téléchargé vers l'emplacement de destination spécifié
     // Prépare la requête SQL pour insérer les valeurs dans la table t_city
     $sql = "INSERT INTO t_city (citName, citLogo, citAccUsername,  citAccPassword, citAccLastName, citAccFirstName, citAccAddress, citAccEmail, citAccPhone, idRole) VALUES ('$cityName', '$cityLogo', '$accUsername', '$accPassword', '$accLastname', '$accFirstname', '$accAddress', '$accEmail', '$accPhone', '$accRole')";
     $result = mysqli_query($db, $sql);
-    
+
     if ($result) {
         // La requête s'est exécutée avec succès
         print "Insertion réussie !";

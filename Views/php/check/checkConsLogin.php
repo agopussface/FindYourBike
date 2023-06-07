@@ -43,6 +43,7 @@ if ($error >= 1) { // Vérifie s'il y a eu au moins une erreur
 } else {
     $_SESSION['logged'] = true; // Définit la variable de session 'logged' à true pour indiquer que l'utilisateur est connecté
     $_SESSION['username'] = $username; // Stocke le nom d'utilisateur dans la variable de session 'username'
+    $_SESSION['entr'] = false;
     header('Location: ../home.php'); // Redirige vers la page d'accueil en cas de succès
 }
 ?>

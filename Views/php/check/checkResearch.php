@@ -29,17 +29,12 @@ if (isset($_POST['frameNo'])) { // Verifie si l'input frameNo existe
         $maxId = $maxIdQuery->fetch_row()[0];
 
         $order = array(); // Ouvre un nouveau tableau pour le classement des résultats
-
         $i = $minId;
-        
         // Boucle qui va checker ligne par ligne les colonnes qui match avec les critères de recherches
         while ($i <= $maxId) {
-
             // Récupère toutes les infos de la ligne min a max de la db
             $query = mysqli_query($db, "SELECT * FROM t_bike WHERE idBike = '$i' AND bikState = 1;");
-
             $match = 0; // Compte les critères qui match
-
             while ($row = $query->fetch_assoc()) {
                 // Verification des match critères = infos de la db
                 if ($row['idBrand'] == $brand) {
@@ -58,11 +53,9 @@ if (isset($_POST['frameNo'])) { // Verifie si l'input frameNo existe
                     $match++;
                 }
             }
-
             $order[$i] = $match; // Ajoute une ligne dans le tableau order
             $i++;
         }
-
         arsort($order); // Trie les valeures du tableau order du plus petit au plus grand
 
 

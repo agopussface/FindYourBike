@@ -47,14 +47,8 @@
             </a>
           </li>
           <li class="nav-item">
-          <?php
-            include ('../module/dbconnect.php');
-            $city =  $_SESSION['city'];
-            $query = mysqli_query($db, "SELECT citName FROM t_city WHERE idCity = '$city'");
-            $row = $query->fetch_assoc();
-            ?>
             <a href="check/disconnect.php" class="nav-link text-white text-wrap">
-              <?php print $row['citName'] . ' - Se deconecter'?>
+              <?php print $_SESSION['username'] . ' - Se deconecter'?>
             </a>
           </li>
           <li class="mt-5">

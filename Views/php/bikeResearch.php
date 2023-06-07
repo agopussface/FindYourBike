@@ -120,14 +120,24 @@
                         <div class="card col-md-3 mt-3">
                             <img src="../../Files/bikePictures/<?php print $row['bikPicture'] ?>" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title text-center"><?php print $row['idBrand'] ?></h5>
+                                <?php
+                                $brand = $row['idBrand'];
+                                $qureyBra = mysqli_query($db, "SELECT braName FROM t_brand WHERE idBrand = '$brand'");
+                                $rowBra = $qureyBra->fetch_assoc();
+                                ?>
+                                <h5 class="card-title text-center"><?php print $rowBra['braName'] ?></h5>
                                 <p class="card-text"><?php print 'ID: ' . $row['idBike'] ?></p>
                                 <p class="card-text"><?php print 'Ebike: ' . $row['bikEbike'] ?></p>
                                 <p class="card-text"><?php print 'Couleur: ' . $row['bikColor'] ?></p>
                                 <p class="card-text"><?php print 'Taille: ' . $row['bikSize'] ?></p>
                                 <p class="card-text"><?php print 'Numéro de cadre: ' . $row['bikFrameNo'] ?></p>
                                 <p class="card-text"><?php print 'Date: ' . $row['bikDate'] ?></p>
-                                <p class="card-text"><?php print 'Commune: ' . $row['idCity'] ?></p>
+                                <?php
+                                $city = $row['idCity'];
+                                $queryCit = mysqli_query($db, "SELECT citName FROM t_city WHERE idCity ='$city'");
+                                $rowCit = $queryCit->fetch_assoc();
+                                ?>
+                                <p class="card-text"><?php print 'Commune: ' . $rowCit['citName'] ?></p>
                                 <a href="check/bikeState.php?id=<?php print $row['idBike'] ?>" class="btn btn-primary">Rendre</a>
                             </div>
                         </div>

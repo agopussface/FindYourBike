@@ -20,7 +20,9 @@
 </head>
 
 <body>
-    <div class="container">
+    <?php
+    if($_SESSION['entr'] == true){ ?>
+        <div class="container">
         <h2>Recenser un vélo</h2>
         <form action="check/checkBike.php" method="POST" enctype="multipart/form-data">
 
@@ -74,6 +76,12 @@
 
         </form>
     </div>
+    <?php } else {
+        print 'Vous n\'avez pas accès à cette page';
+    }
+
+    ?>
+    
 </body>
 
 </html>

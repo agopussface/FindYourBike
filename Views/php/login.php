@@ -18,7 +18,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-12">
         <h2>Consultation</h2>
         <form action="check/checkConsLogin.php" method="post">
           <div class="mb-3">
@@ -35,7 +35,7 @@
         </form>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-12">
         <h2>Commune</h2>
         <form action="check/checkEntrLogin.php" method="post">
           <div class="mb-3">
