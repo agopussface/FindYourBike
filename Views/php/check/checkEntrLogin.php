@@ -34,7 +34,11 @@ $query = mysqli_query($db, "SELECT * FROM t_city WHERE citAccUsername='$username
 while ($row = $query->fetch_assoc()) { // Parcours les résultats de la requête
   $hash = $row['citAccPassword']; // Récupère le mot de passe correspondant à l'entrée de l'utilisateur
   $city = $row['idCity']; // Récupère l'id de la ville correspondant a l'entrée de l'utilisateur
+  if ($row['citState'] == '0'){
+    $error++;;
+  }
 }
+
 
 if ($error >= 1) { // Vérifie s'il y a eu au moins une erreur
   header('Location: ../login.php'); // Redirige vers la page de connexion en cas d'erreur

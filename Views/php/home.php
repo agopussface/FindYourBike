@@ -11,7 +11,7 @@
     <!-- Inclusion des modules de l'application -->
     <?php
     include('../module/islogged.php');
-    include('../module/navbar.html');
+    include('../module/navbar.php');
     ?>
 
     <!-- Titre de la page -->
@@ -37,12 +37,6 @@
             </div>
         </div>
     </div>
-
-    <?php print $_SESSION['username']; 
-    print $_SESSION['city'] . '<br>';
-    print $_SESSION['trimSelect'];
-    print $_SESSION['yearSelect'];
-    ?>
 </body>
 
 </html>

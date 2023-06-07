@@ -13,7 +13,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2 bg-black text-white">
+    <div class="col-md-3 bg-black text-white">
       <div
         class="d-flex flex-column flex-shrink-0 p-3 text-white bg-black"
         style="height: 100vh"
@@ -42,35 +42,28 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="myCity.php" class="nav-link text-white text-wrap">
+            <a href="cities.php" class="nav-link text-white text-wrap">
               Gestion de la commune
             </a>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link text-white dropdown-toggle text-wrap"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dropdown (au cas où) 
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Drop1</a></li>
-              <li><a class="dropdown-item" href="#">Drop2</a></li>
-              <li><a class="dropdown-item" href="#">Drop3</a></li>
-            </ul>
-          </li>
           <li class="nav-item">
+          <?php
+            include ('../module/dbconnect.php');
+            $city =  $_SESSION['city'];
+            $query = mysqli_query($db, "SELECT citName FROM t_city WHERE idCity = '$city'");
+            $row = $query->fetch_assoc();
+            ?>
             <a href="check/disconnect.php" class="nav-link text-white text-wrap">
-              Se déconnecter
+              <?php print $row['citName'] . ' - Se deconecter'?>
             </a>
+          </li>
+          <li class="mt-5">
+
           </li>
         </ul>
       </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <style>
         .col-md-10 {
           height: 100vh;

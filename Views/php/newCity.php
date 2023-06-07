@@ -12,7 +12,8 @@
 
   <!-- Inclusion des modules de l'application -->
   <?php
-  include('../module/navbar.html');
+  include('../module/navbar.php');
+  include('../module/dbconnect.php');
   ?>
 
 </head>
@@ -42,8 +43,16 @@
       </div>
 
       <div class="mb-3">
-        <label for="accRole" class="form-label">Mon rôle au sein de la commune:</label>
-        <input type="text" class="form-control" id="accRole" name="accRole">
+        <label for="role" class="form-label">Role</label>
+        <select class="form-select" id="accRole" name="accRole">
+          <option value="">--Please choose an option--
+            <?php
+            $query = mysqli_query($db, "SELECT * FROM t_role");
+            while ($row = $query->fetch_assoc()) {
+              print '<option value="' . $row['idRole'] . '">' . $row['rolName'] . '</option>';
+            }
+            ?>
+        </select>
       </div>
 
       <div class="mb-3">

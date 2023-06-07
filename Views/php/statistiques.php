@@ -11,7 +11,7 @@
   <!-- Inclusion des modules de l'application -->
   <?php
   include('../module/islogged.php');
-  include('../module/navbar.html');
+  include('../module/navbar.php');
   include('../module/dbconnect.php');
   ?>
 
@@ -170,7 +170,7 @@
             <?php
             foreach ($_GET as $name => $value) {
               if ($name !== 'optTrim') {
-                echo '<input type="hidden" name="' . $name . '" value="' . $value . '">';
+                print '<input type="hidden" name="' . $name . '" value="' . $value . '">';
               }
             }
             ?>
@@ -199,20 +199,20 @@
             <?php
             foreach ($_GET as $name => $value) {
               if ($name !== 'optYear') {
-                echo '<input type="hidden" name="' . $name . '" value="' . $value . '">';
+                print '<input type="hidden" name="' . $name . '" value="' . $value . '">';
               }
             }
             ?>
             <!-- Radio box -->
             <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-outline-primary">
-                <input type="radio" name="optYear" value="<?php echo date('Y-m-d', strtotime('-2 years', strtotime($currentYear))); ?>" onchange="this.form.submit()"> <?php echo date('Y', strtotime('-2 years', strtotime($currentYear))); ?><br>
+                <input type="radio" name="optYear" value="<?php print date('Y-m-d', strtotime('-2 years', strtotime($currentYear))); ?>" onchange="this.form.submit()"> <?php print date('Y', strtotime('-2 years', strtotime($currentYear))); ?><br>
               </label>
               <label class="btn btn-outline-primary">
-                <input type="radio" name="optYear" value="<?php echo date('Y-m-d', strtotime('-1 years', strtotime($currentYear))); ?>" onchange="this.form.submit()"> <?php echo date('Y', strtotime('-1 years', strtotime($currentYear))); ?> <br>
+                <input type="radio" name="optYear" value="<?php print date('Y-m-d', strtotime('-1 years', strtotime($currentYear))); ?>" onchange="this.form.submit()"> <?php print date('Y', strtotime('-1 years', strtotime($currentYear))); ?> <br>
               </label>
               <label class="btn btn-outline-primary">
-                <input type="radio" name="optYear" value="<?php echo date('Y-01-01'); ?>" onchange="this.form.submit()"> <?php echo date('Y'); ?> <br>
+                <input type="radio" name="optYear" value="<?php print date('Y-01-01'); ?>" onchange="this.form.submit()"> <?php print date('Y'); ?> <br>
               </label>
             </div>
           </form>

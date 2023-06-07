@@ -18,10 +18,10 @@ if (isset($_FILES['bikepicture']['name'])) { // Vérifie si le champ "bikepictur
     $error++; // Incrémente $error pour indiquer une erreur
 }
 
-// Couleur du vélo $color
+// Ebike ?
 if (isset($_POST['ebike'])) { // Vérifie si le champ "ebike" a été envoyé via POST
-    if (!empty($_POST['ebike'])) { // Vérifie si le champ "ebike" n'est pas vide
-        $ebike = mysqli_real_escape_string($db, ($_POST['ebike'])); // Échappe les caractères spéciaux et assigne la valeur à la variable $ebike
+    if (isset($_POST['ebike'])) { // Vérifie si le champ "ebike" n'est pas vide
+        $ebike = $_POST['ebike']; // Échappe les caractères spéciaux et assigne la valeur à la variable $ebike
     } else {
         $error++; // Incrémente $error pour indiquer une erreur
     }
@@ -90,7 +90,14 @@ if (isset($_POST['brand'])) { // Vérifie si le champ "brand" a été envoyé vi
 $city = $_SESSION['city']; // Assigne la valeur de la variable de session à $city
 
 if($error >= 1){
-    header('Location: ../newBike.php');
+    //header('Location: ../newBike.php');
+    print $bikePicture . '<br>';
+    print $_POST['ebike'] . '<br>';
+    print $color . '<br>';
+    print $size . '<br>';
+    print $frameNo . '<br>';
+    print $brand . '<br>';
+    print $city . '<br>';
 } else {
     move_uploaded_file($tmpname, $picDestination);
     $sql = "INSERT INTO t_bike (bikPicture, bikEBike, bikColor, bikSize, bikFrameNo, idBrand, idCity) VALUES ('$bikePicture', '$ebike', '$color', '$size', '$frameNo', '$brand','$city')";

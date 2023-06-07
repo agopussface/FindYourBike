@@ -10,8 +10,9 @@
 
     <!-- Inclusion des modules de l'application -->
     <?php
+    include('../module/islogged.php');
     include('../module/dbconnect.php');
-    include('../module/navbar.html');
+    include('../module/navbar.php');
     ?>
 
     <title>New Bike</title>
@@ -28,17 +29,19 @@
                 <input type="file" class="form-control" id="bikepicture" name="bikepicture">
             </div>
 
-            <fieldset class="mb-3">
-                <legend class="form-label">EBike ?</legend>
-                <div class="form-check">
-                    <input type="radio" id="option1" name="ebike" value="Oui">
-                    <label for="option1">Oui</label>
+            <div class="mb-3">
+                <label for="ebike" class="form-label">E bike ? </label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ebike" id="yesEbike" value="1">
+                    <label class="form-check-label" for="yesEbike">Oui</label>
                 </div>
-                <div class="form-check">
-                    <input type="radio" id="option2" name="ebike" value="Non">
-                    <label for="option2">Non</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ebike" id="noEbike" value="0">
+                    <label class="form-check-label" for="noEbike">Non</label>
                 </div>
-            </fieldset>
+
+            </div>
 
             <div class="mb-3">
                 <label for="color" class="form-label">Couleur</label>

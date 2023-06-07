@@ -111,16 +111,27 @@ if (isset($_POST['accPassword'])) { // Vérifie si le champ "accPassword" a ét�
 
 if ($error >= 1) { // Vérifie s'il y a eu au moins une erreur
     header('Location: ../newCity.php'); // Redirige vers la page du formulaire en cas d'erreur
+    /*print $cityName . '<br>';
+    print $cityLogo . '<br>';
+    print $accUsername . '<br>';
+    print $accPassword . '<br>';
+    print $accLastname . '<br>';
+    print $accFirstname . '<br>';
+    print $accAddress . '<br>';
+    print $accEmail . '<br>';
+    print $accPhone . '<br>';
+    print $accRole . '<br>';*/
+
 } else {
     move_uploaded_file($tmpname, $logoDestination); // Déplace le fichier téléchargé vers l'emplacement de destination spécifié
     // Prépare la requête SQL pour insérer les valeurs dans la table t_city
-    $sql = "INSERT INTO t_city (citName, citLogo, citAccUsername,  citAccPassword, citAccLastName, citAccFirstName, citAccRole, citAccAddress, citAccEmail, citAccPhone) VALUES ('$cityName', '$cityLogo', '$accUsername', '$accPassword', '$accLastname', '$accFirstname', '$accRole', '$accAddress', '$accEmail', '$accPhone')";
+    $sql = "INSERT INTO t_city (citName, citLogo, citAccUsername,  citAccPassword, citAccLastName, citAccFirstName, citAccAddress, citAccEmail, citAccPhone, idRole) VALUES ('$cityName', '$cityLogo', '$accUsername', '$accPassword', '$accLastname', '$accFirstname', '$accAddress', '$accEmail', '$accPhone', '$accRole')";
     $result = mysqli_query($db, $sql);
     
     if ($result) {
         // La requête s'est exécutée avec succès
         print "Insertion réussie !";
-        header('Location: ../login.php');
+        //header('Location: ../login.php');
     } else {
         // Une erreur s'est produite
         print "Erreur lors de l'insertion : " . mysqli_error($db);
